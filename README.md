@@ -14,18 +14,18 @@ graph TD
     B --> C{Are there tasks<br/>remaining?}
     
     C -- Yes --> D[Get Next Task]
-    D --> E[Start Task Execution<br/><i>(State: Active)</i>]
-    E --> F{Did Task Resolve<br/>Successfully?}
+    D --> E["Start Task Execution (State: Active)"]
+    E --> F{"Did Task Resolve Successfully?"}
     
-    F -- Yes --> G[Store Result in Array<br/><i>(State: Done)</i>]
+    F -- Yes --> G["Store Result in Array (State: Done)"]
     G --> C
     
-    F -- No --> H[Catch Error<br/><i>(State: Failed)</i>]
+    F -- No --> H["Catch Error (State: Failed)"]
     H --> I[Halt Execution Sequence]
-    I --> J([Throw Error / Abort Sequence])
+    I --> J(["Throw Error / Abort Sequence"])
     
     C -- No --> K[Return All Aggregated Results]
-    K --> L([Sequence Completed Successfully])
+    K --> L(["Sequence Completed Successfully"])
 ```
 
 ## Features

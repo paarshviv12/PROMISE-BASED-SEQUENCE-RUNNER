@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise-Based Sequence Runner</title>
+    <meta name="description" content="Sequential Async Execution Demonstration">
+    <link rel="stylesheet" href="runner.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container split-layout">
+
+        <main class="left-panel">
+            <header class="app-header">
+                <h1>Web App Interface</h1>
+                <p>Simulating real-world interactions & sequences.</p>
+            </header>
+
+            <section class="interaction-section box-panel">
+                <h2>User Actions</h2>
+                <div class="action-grid">
+                    <div class="action-card">
+                        <h3>Simulate Login</h3>
+                        <p>Triggers authentication & background validation.</p>
+                        <button id="login-btn" class="primary-btn">
+                            <span class="btn-text">Login</span>
+                        </button>
+                    </div>
+                    <div class="action-card">
+                        <h3>Fetch Dashboard</h3>
+                        <p>Requests user profile and recent activity data.</p>
+                        <button id="fetch-data-btn" class="primary-btn">
+                            <span class="btn-text">Fetch Data</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="assignment-section box-panel">
+                <h2>Sequential Task Runner</h2>
+                <p class="section-desc">Executes an array of asynchronous tasks securely in order, preserving execution
+                    timeline and capturing results.</p>
+                <div class="controls">
+                    <button id="run-btn" class="primary-btn">
+                        <span class="btn-text">Run Tasks Sequentially</span>
+                        <span class="btn-icon">▶</span>
+                    </button>
+                    <button id="reset-btn" class="secondary-btn" disabled>
+                        <span class="btn-text">Reset</span>
+                    </button>
+                </div>
+
+                <div class="results-panel">
+                    <h3>Execution Terminal</h3>
+                    <div class="terminal" id="terminal-output">
+                        <p class="log-entry system">System ready. Waiting for execution...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="divider-container" id="panel-divider">
+            <button id="toggle-runner-btn" class="toggle-btn" title="Toggle Live Runner">
+                <span class="toggle-icon">▶</span>
+            </button>
+            <div class="divider-line"></div>
+        </div>
+
+        <aside class="right-panel visualizer" id="live-runner-panel">
+            <div class="panel-header">
+                <h2>Live Promise Runner</h2>
+                <p>Visualizing background async tasks</p>
+            </div>
+            <div class="task-list" id="task-list">
+            </div>
+        </aside>
+
+    </div>
+    <script src="runner.js"></script>
+</body>
+
+</html>

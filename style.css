@@ -820,4 +820,97 @@ button,
     .modal-info-col h3 {
         font-size: 2.5rem;
     }
+
+    /* Add Record Card Styling */
+    .add-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px dashed rgba(255, 255, 255, 0.3);
+        background: transparent;
+        transition: all 0.3s ease;
+    }
+
+    .add-card:hover {
+        border-color: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .add-card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.6);
+        transition: color 0.3s ease;
+    }
+
+    .add-card:hover .add-card-content {
+        color: rgba(255, 255, 255, 1);
+    }
+
+    .plus-icon {
+        font-size: 5rem;
+        font-weight: 300;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Custom Form Adjustments */
+    .custom-form .input-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .custom-form textarea {
+        width: 100%;
+        padding: 0.8rem;
+        background: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+        color: var(--text-color);
+        font-family: 'Outfit', sans-serif;
+        font-size: 1rem;
+        resize: vertical;
+        min-height: 80px;
+    }
+
+    .custom-form textarea:focus {
+        outline: none;
+        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .file-group {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px dashed rgba(255, 255, 255, 0.2);
+    }
+
+    .file-group input[type="file"] {
+        appearance: none;
+        background: transparent;
+        border: none;
+        padding: 0.5rem 0 0 0;
+        font-size: 0.9rem;
+        cursor: pointer;
+    }
+
+    .file-group input[type="file"]::file-selector-button {
+        background: #fff;
+        color: #000;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: inherit;
+        font-weight: bold;
+        margin-right: 1rem;
+        transition: background 0.3s;
+    }
+
+    .file-group input[type="file"]::file-selector-button:hover {
+        background: #ccc;
+    }
 }

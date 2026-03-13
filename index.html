@@ -177,6 +177,16 @@
                         </div>
                     </article>
 
+                    <!-- Add Custom Era Card -->
+                    <article class="artist-card add-card" id="add-era-btn">
+                        <div class="card-image-wrapper">
+                            <div class="add-card-content">
+                                <span class="plus-icon outfit-font">+</span>
+                                <h3 class="pixel-font">ADD NEW ERA</h3>
+                            </div>
+                        </div>
+                    </article>
+
                 </section>
 
                 <!-- Bottom Ribbon: Right to Left -->
@@ -249,6 +259,47 @@
             <div class="modal-body">
                 <div class="modal-image-col">
                     <img id="modal-album-img" src="" alt="Album Cover">
+                </div>
+
+                <!-- ADD RECORD MODAL -->
+                <div id="add-modal" class="modal-overlay hidden">
+                    <div class="modal-content glass-effect">
+                        <button id="close-add-modal-btn" class="close-btn gothic-font">&times;</button>
+                        <div class="modal-body">
+                            <div class="modal-info-col" style="width: 100%;">
+                                <h2 class="pixel-font" style="margin-bottom: 2rem;">Contribute to the Era</h2>
+                                <form id="add-record-form" class="custom-form">
+                                    <div class="input-group">
+                                        <label for="new-artist" class="gothic-font">ARTIST NAME:</label>
+                                        <input type="text" id="new-artist" required placeholder="Dr. Dre">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="new-album" class="gothic-font">ALBUM / SONG TITLE:</label>
+                                        <input type="text" id="new-album" required placeholder="The Chronic">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="new-year" class="gothic-font">RELEASE YEAR:</label>
+                                        <input type="text" id="new-year" required placeholder="Released: 1992">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="new-desc" class="gothic-font">DESCRIPTION:</label>
+                                        <textarea id="new-desc" required
+                                            placeholder="A defining moment in G-funk..."></textarea>
+                                    </div>
+                                    <div class="input-group file-group">
+                                        <label class="gothic-font">COVER ART (IMAGE):</label>
+                                        <input type="file" id="new-image" accept="image/*" required>
+                                    </div>
+                                    <div class="input-group file-group">
+                                        <label class="gothic-font">AUDIO TRACK (MP3/WAV):</label>
+                                        <input type="file" id="new-audio" accept="audio/*" required>
+                                    </div>
+                                    <button type="submit" class="gothic-font submit-btn" style="margin-top: 1rem;">Add
+                                        to Era</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-info-col">
                     <h2 id="modal-artist-name" class="pixel-font"></h2>

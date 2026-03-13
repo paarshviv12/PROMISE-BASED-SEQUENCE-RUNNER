@@ -360,4 +360,99 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    // --- Add Custom Era Logic ---
+    const addEraBtn = document.getElementById('add-era-btn');
+    const addModal = document.getElementById('add-modal');
+    const closeAddModalBtn = document.getElementById('close-add-modal-btn');
+    const addRecordForm = document.getElementById('add-record-form');
+    const galleryGrid = document.querySelector('.gallery-grid');
+
+    let customRecordCount = 0;
+
+    // Open Add Modal
+    addEraBtn.addEventListener('click', () => {
+        addModal.classList.remove('hidden');
+    });
+
+    // Close Add Modal
+    const closeAddModal = () => {
+        addModal.classList.add('hidden');
+        addRecordForm.reset();
+    };
+
+    closeAddModalBtn.addEventListener('click', closeAddModal);
+
+    addModal.addEventListener('click', (e) => {
+        if (e.target === addModal) {
+            closeAddModal();
+        }
+    });
+
+    // Submit New Record
+    addRecordForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const artist = document.getElementById('new-artist').value.trim();
+        const album = document.getElementById('new-album').value.trim();
+        const year = document.getElementById('new-year').value.trim();
+        const desc = document.getElementById('new-desc').value.trim();
+        const imageFile = document.getElementById('new-image').files[0];
+        const audioFile = document.getElementById('new-audio').files[0];
+
+        if (!artist || !album || !imageFile || !audioFile) {
+            updateTerminal('Failed to add custom era: Missing required fields.', 'error');
+            return;
+        }
+
+        const artistKey = `custom-${customRecordCount++}`;
+
+        // Use browser memory to temporarily host the uploaded files
+        const imageObjUrl = URL.createObjectURL(imageFile);
+        const audioObjUrl = URL.createObjectURL(audioFile);
+
+        // Add to "Database"
+        albumData[artistKey] = {
+            artistName: artist,
+            albumName: album,
+            year: year,
+            description: desc,
+            imgSrc: imageObjUrl,
+            audioSrc: audioObjUrl
+        };
+
+        simulateLiveTask(`Validating Media Files for ${artist}`, 1200)
+            .then(() => simulateLiveTask(`Injecting Custom Node [${artistKey}] into DOM`, 800))
+            .then(() => {
+                // Construct the HTML Element
+                const article = document.createElement('article');
+                article.className = 'artist-card';
+                article.setAttribute('data-artist', artistKey);
+
+                article.innerHTML = `
+                    <div class="card-image-wrapper">
+                        <img src="${imageObjUrl}" alt="${artist}" class="artist-img">
+                        <div class="hover-overlay glass-effect">
+                            <h3 class="pixel-font artist-name">${artist}</h3>
+                        </div>
+                    </div>
+                `;
+
+                // Add the exact same click behavior as native cards
+                article.addEventListener('click', () => {
+                    const data = albumData[artistKey];
+                    simulateLiveTask(`Querying Custom Entry: ${data.artistName}`, 800)
+                        .then(() => simulateLiveTask(`Decryping Local Memory Object: ${data.audioSrc.substring(0, 25)}...`, 1500))
+                        .then(() => openModal(artistKey))
+                        .catch(err => console.error(err));
+                });
+
+                // Insert before the "Add" button so it flows correctly
+                galleryGrid.insertBefore(article, addEraBtn);
+
+                updateTerminal(`Custom sequence [${artistKey}] successfully deployed!`, 'success');
+                closeAddModal();
+            })
+            .catch(err => console.error('Failed to inject custom record:', err));
+    });
 });
